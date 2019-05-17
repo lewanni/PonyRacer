@@ -19,6 +19,7 @@ export class UserService {
   }
 
   authenticate(credentials: object): Observable<object> {
+    console.log(credentials);
     return this.httpClient.post<object>(this.host + 'api/users/authentication', credentials);
   }
 }
