@@ -1,6 +1,7 @@
 # Ponyracer
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
+The project contains exercices from this course [angular-exercises.ninja-squad.com](https://angular-exercises.ninja-squad.com/).
 
 ## Development server
 
@@ -17,6 +18,8 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+Then, run `npm run ng2ninja` to re-execute the unit tests and push your result/progression in your [angular-exercises.ninja-squad.com](https://angular-exercises.ninja-squad.com/) account.
 
 ## Running end-to-end tests
 
