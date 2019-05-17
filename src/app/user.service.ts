@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { UserModel } from './models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +10,11 @@ import { Observable } from 'rxjs';
 export class UserService {
 
   host: string;
+  userEvents: Subject<UserModel>;
 
   constructor(private httpClient: HttpClient) {
     this.host = 'http://ponyracer.ninja-squad.com/';
+    this.userEvents = new Subject<UserModel>();
   }
 
   register(login: string, password: string, birthYear: number): Observable<object> {
@@ -18,8 +22,8 @@ export class UserService {
     return this.httpClient.post<object>(this.host + 'api/users', user);
   }
 
-  authenticate(credentials: object): Observable<object> {
-    console.log(credentials);
-    return this.httpClient.post<object>(this.host + 'api/users/authentication', credentials);
+  authenticate(credentials: object): Observable<UserModel> {
+    return this.httpClient.post<UserModel>(this.host + 'api/users/authentication', credentials)
+      .pipe(tap(user => this.userEvents.next(user)));
   }
 }

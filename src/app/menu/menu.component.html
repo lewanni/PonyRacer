@@ -3,11 +3,18 @@
   <button type="button" class="navbar-toggler navbar-toggler-right" (click)="toggleNavbar()">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div id="navbar" class="navbar-collapse" [class.collapse]="navbarCollapsed" >
+  <div id="navbar" class="navbar-collapse" [class.collapse]="navbarCollapsed">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <a class="nav-link" routerLink="races">Races</a>
       </li>
+      <div *ngIf="user">
+        <span class="nav-item navbar-text mr-2">
+          {{ user.login }}
+          <span class="fa fa-star"></span>
+          {{ user.money }}
+        </span>
+      </div>
     </ul>
   </div>
 </nav>
