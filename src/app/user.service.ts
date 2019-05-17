@@ -17,4 +17,8 @@ export class UserService {
     const user = { login, password, birthYear };
     return this.httpClient.post<object>(this.host + 'api/users', user);
   }
+
+  authenticate(credentials: object): Observable<object> {
+    return this.httpClient.post<object>(this.host + 'api/users/authentication', credentials);
+  }
 }
