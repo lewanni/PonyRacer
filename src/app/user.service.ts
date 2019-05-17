@@ -15,6 +15,7 @@ export class UserService {
   constructor(private httpClient: HttpClient) {
     this.host = 'http://ponyracer.ninja-squad.com/';
     this.userEvents = new BehaviorSubject<UserModel>(undefined);
+    this.retrieveUser();
   }
 
   register(login: string, password: string, birthYear: number): Observable<object> {
@@ -24,6 +25,21 @@ export class UserService {
 
   authenticate(credentials: object): Observable<UserModel> {
     return this.httpClient.post<UserModel>(this.host + 'api/users/authentication', credentials)
-      .pipe(tap(user => this.userEvents.next(user)));
+      .pipe(tap(user => {
+        this.storeLoggedInUser(user);
+      }));
+  }
+
+  storeLoggedInUser(user: UserModel): void {
+    if (!localStorage.getItem('rememberMe')) {
+      localStorage.setItem('rememberMe', JSON.stringify(user));
+      this.userEvents.next(user);
+    }
+  }
+
+  retrieveUser(): void {
+    if (localStorage.getItem('rememberMe')) {
+      this.userEvents.next(JSON.parse(localStorage.getItem('rememberMe')));
+    }
   }
 }
