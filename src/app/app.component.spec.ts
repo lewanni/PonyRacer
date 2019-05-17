@@ -1,31 +1,32 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+
 import { AppComponent } from './app.component';
+import { MenuComponent } from './menu/menu.component';
+import { By } from '@angular/platform-browser';
 
 describe('AppComponent', () => {
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
-      ],
-    }).compileComponents();
+
+  beforeEach(() => TestBed.configureTestingModule({
+    imports: [RouterTestingModule],
+    declarations: [AppComponent, MenuComponent]
   }));
 
-  it('should create the app', () => {
+  it('should have a router outlet', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+    const element = fixture.nativeElement;
+    const routerOutlet = element.querySelector('router-outlet');
+    expect(routerOutlet)
+      .withContext('You need a RouterOutlet component in your root component')
+      .not.toBeNull();
   });
 
-  it(`should have as title 'ponyracer'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('ponyracer');
-  });
-
-  it('should render title in a h1 tag', () => {
+  it('should use the menu component', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to ponyracer!');
+    const element = fixture.debugElement;
+    expect(element.query(By.directive(MenuComponent)))
+      .withContext('You probably forgot to add MenuComponent to the AppComponent template')
+      .not.toBeNull();
   });
 });
