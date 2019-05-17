@@ -42,4 +42,9 @@ export class UserService {
       this.userEvents.next(JSON.parse(localStorage.getItem('rememberMe')));
     }
   }
+
+  logout(): void {
+    this.userEvents.next(null);
+    localStorage.removeItem('rememberMe');
+  }
 }
