@@ -3,6 +3,12 @@
 </div>
 
 <div class="text-center">
-  <a class="btn btn-primary" routerLink="login">Login</a>
-  <a class="btn btn-primary ml-1" routerLink="register">Register</a>
+  <div *ngIf="!user; else login">
+    <a class="btn btn-primary" routerLink="login">Login</a>
+    <a class="btn btn-primary ml-1" routerLink="register">Register</a>
+  </div>
+  <ng-template #login>
+    <a class="btn btn-primary" routerLink="races">Races</a>
+  </ng-template>
+
 </div>

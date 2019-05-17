@@ -4,17 +4,17 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div id="navbar" class="navbar-collapse" [class.collapse]="navbarCollapsed">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="races">Races</a>
-      </li>
-      <div *ngIf="user">
+    <div *ngIf="user">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="races">Races</a>
+        </li>
         <span class="nav-item navbar-text mr-2">
           {{ user.login }}
           <span class="fa fa-star"></span>
           {{ user.money }}
         </span>
-      </div>
-    </ul>
+      </ul>
+    </div>
   </div>
 </nav>
