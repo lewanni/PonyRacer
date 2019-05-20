@@ -10,6 +10,7 @@ export class PonyComponent implements OnInit {
 
   @Input() ponyModel: PonyModel;
   @Input() isRunning: boolean;
+  @Input() isBoosted: boolean;
   @Output() readonly ponyClicked: EventEmitter<PonyModel> = new EventEmitter();
 
   constructor() { }
@@ -38,7 +39,11 @@ export class PonyComponent implements OnInit {
     }
 
     if (this.isRunning) {
-      url = url + '-running';
+      const prefix = url;
+      url = prefix + '-running';
+      if (this.isBoosted) {
+        url = prefix + '-rainbow';
+      }
     }
     return url + '.gif';
   }
