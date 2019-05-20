@@ -23,6 +23,7 @@ export class BetComponent implements OnInit {
     const id = this.activatedRoute.snapshot.paramMap.get('raceId');
     this.raceService.get(parseInt(id, 10)).subscribe(race => {
       this.raceModel = race;
+      console.log(this.raceModel.id);
     });
   }
 

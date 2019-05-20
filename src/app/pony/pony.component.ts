@@ -9,6 +9,7 @@ import { PonyModel } from '../models/pony.model';
 export class PonyComponent implements OnInit {
 
   @Input() ponyModel: PonyModel;
+  @Input() isRunning: boolean;
   @Output() readonly ponyClicked: EventEmitter<PonyModel> = new EventEmitter();
 
   constructor() { }
@@ -20,22 +21,26 @@ export class PonyComponent implements OnInit {
     let url = 'assets/images/';
     switch (this.ponyModel.color) {
       case 'BLUE':
-        url = url + 'pony-blue.gif';
+        url = url + 'pony-blue';
         break;
       case 'GREEN':
-        url = url + 'pony-green.gif';
+        url = url + 'pony-green';
         break;
       case 'ORANGE':
-        url = url + 'pony-orange.gif';
+        url = url + 'pony-orange';
         break;
       case 'PURPLE':
-        url = url + 'pony-purple.gif';
+        url = url + 'pony-purple';
         break;
       case 'YELLOW':
-        url = url + 'pony-yellow.gif';
+        url = url + 'pony-yellow';
         break;
     }
-    return url;
+
+    if (this.isRunning) {
+      url = url + '-running';
+    }
+    return url + '.gif';
   }
 
   clicked(pony: PonyModel): void {
