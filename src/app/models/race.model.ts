@@ -6,6 +6,7 @@ export interface RaceModel {
     ponies: Array<PonyModel>;
     id: number;
     startInstant: string;
+    status?: 'PENDING' | 'RUNNING' | 'FINISHED';
 }
 
 export interface LiveRaceModel {
@@ -14,4 +15,5 @@ export interface LiveRaceModel {
     ponies: Array<PonyWithPositionModel>;
     id: number;
     startInstant: string;
+    status: 'PENDING' | 'RUNNING' | 'FINISHED';
 }
