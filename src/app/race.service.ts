@@ -14,8 +14,9 @@ export class RaceService {
 
   constructor(private httpClient: HttpClient, private wsService: WsService) { }
 
-  list(): Observable<Array<RaceModel>> {
-    return this.httpClient.get<Array<RaceModel>>(environment.baseUrl + '/api/races?status=PENDING');
+  list(status: string): Observable<Array<RaceModel>> {
+    const params = { status };
+    return this.httpClient.get<Array<RaceModel>>(`${environment.baseUrl}/api/races`, { params });
   }
 
   bet(raceId: number, ponyId: number): Observable<RaceModel> {
