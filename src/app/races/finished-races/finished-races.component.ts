@@ -11,7 +11,11 @@ export class FinishedRacesComponent implements OnInit {
 
   races: Array<RaceModel>;
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  page: number;
+
+  constructor(private activatedRoute: ActivatedRoute) {
+    this.page = 1;
+  }
 
   ngOnInit() {
     this.races = this.activatedRoute.snapshot.data.races;

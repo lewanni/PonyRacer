@@ -16,5 +16,5 @@
   </div>
 
   <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Let's go</button>
-  <pr-alert *ngIf="authenticationFailed" type="danger" (close)="authenticationFailed = false">Nope, try again</pr-alert>
+  <ngb-alert *ngIf="authenticationFailed" type="danger" (close)="authenticationFailed = false">Nope, try again</ngb-alert>
 </form>

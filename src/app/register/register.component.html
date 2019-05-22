@@ -31,7 +31,7 @@
 
   <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Let's go</button>
 
-  <pr-alert *ngIf="registrationFailed" type="danger" (close)="registrationFailed = false">
+  <ngb-alert *ngIf="registrationFailed" type="danger" (close)="registrationFailed = false">
     Try again with another login.
-  </pr-alert>
+  </ngb-alert>
 </form>

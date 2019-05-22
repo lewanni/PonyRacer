@@ -1,9 +1,9 @@
 <h2>{{ raceModel.name }}</h2>
 <p>{{ raceModel.startInstant | fromNow }}</p>
 
-<pr-alert *ngIf="betFailed" type="danger" (close)="betFailed = false">
+<ngb-alert *ngIf="betFailed" type="danger" (close)="betFailed = false">
   The race is already started or finished
-</pr-alert>
+</ngb-alert>
 <ul>
   <li *ngFor="let pony of raceModel.ponies">
     <div class="col-12 col-md-2" [ngClass]="{selected: isPonySelected(pony)}">
