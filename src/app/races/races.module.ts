@@ -11,6 +11,7 @@ import { PonyComponent } from './../pony/pony.component';
 import { FromNowPipe } from './../from-now.pipe';
 import { RouterModule } from '@angular/router';
 import { RACES_ROUTES } from './races.routes';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { RACES_ROUTES } from './races.routes';
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(RACES_ROUTES)
+    RouterModule.forChild(RACES_ROUTES),
+    SharedModule
   ]
 })
 export class RacesModule { }
