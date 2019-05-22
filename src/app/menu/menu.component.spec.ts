@@ -89,7 +89,9 @@ describe('MenuComponent', () => {
     fixture.detectChanges();
 
     const linksAfterLogin = fixture.debugElement.queryAll(By.directive(RouterLinkWithHref));
-    expect(linksAfterLogin.length).withContext('You should have two routerLink: one to the races, one to the home').toBe(2);
+    expect(linksAfterLogin.length)
+      .withContext('You should have three routerLink: one to the races, one to the home, one to the money history when the user is logged')
+      .toBe(3);
   });
 
   it('should listen to userEvents and score updates in ngOnInit', fakeAsync(() => {
@@ -143,12 +145,12 @@ describe('MenuComponent', () => {
     fixture.detectChanges();
 
     const element = fixture.nativeElement;
-    const info = element.querySelector('span.nav-item.navbar-text.mr-2');
+    const info = element.querySelector('a.nav-item.nav-link.mr-2');
     expect(info)
-      .withContext('You should have a `span` element with the classes `nav-item navbar-text mr-2` to display the user info')
+      .withContext('You should have an `a` element with the classes `nav-item nav-link mr-2` to display the user info')
       .not.toBeNull();
-    expect(info.textContent).withContext('You should display the user\'s name in a `span` element').toContain('cedric');
-    expect(info.textContent).withContext('You should display the user\'s score in a `span` element').toContain('200');
+    expect(info.textContent).withContext('You should display the user\'s name in an `a` element').toContain('cedric');
+    expect(info.textContent).withContext('You should display the user\'s score in an `a` element').toContain('200');
   });
 
   it('should unsubscribe on destroy', () => {

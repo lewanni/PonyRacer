@@ -9,12 +9,12 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="races">Races</a>
         </li>
-        <span class="nav-item navbar-text mr-2">
+        <a class="nav-item nav-link mr-2" routerLink="users/money/history">
           {{ user.login }}
           <span class="fa fa-star"></span>
           {{ user.money }}
-        </span>
-        <span class="fa fa-power-off" (click)="logout($event)"></span>
+        </a>
+        <span class="nav-item nav-link fa fa-power-off" (click)="logout($event)" ></span>
       </ul>
     </div>
   </div>
